@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Nueva Venta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Nueva Venta</h1>
+  <nav><a class="button back" th:href="@{/ventas}">Volver</a></nav>
+  <form th:action="@{/ventas/guardar}" method="post">
+    <div>
+      <label>ID Cliente</label>
+      <input type="number" name="idCliente" min="1" required/>
+      <small>(para simplificar: ingresá el ID; si querés, después lo cambiamos por combo)</small>
+    </div>
+
+    <h3>Ítems (hasta 3 líneas)</h3>
+    <div>
+      <label>Producto</label>
+      <select name="productoId">
+        <option th:each="p : ${productos}" th:value="${p.id}" th:text="${p.nombre}">Producto</option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="1" value="1"/>
+    </div>
+
+    <div>
+      <label>Producto</label>
+      <select name="productoId">
+        <option th:each="p : ${productos}" th:value="${p.id}" th:text="${p.nombre}">Producto</option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="1" value="0"/>
+    </div>
+
+    <div>
+      <label>Producto</label>
+      <select name="productoId">
+        <option th:each="p : ${productos}" th:value="${p.id}" th:text="${p.nombre}">Producto</option>
+      </select>
+      <label>Cantidad</label>
+      <input type="number" name="cantidad" min="1" value="0"/>
+    </div>
+
+    <button class="button" type="submit">Guardar Venta</button>
+  </form>
+</div>
+</body>
+</html>

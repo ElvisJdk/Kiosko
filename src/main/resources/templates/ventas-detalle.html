@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Detalle de Venta</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+  <h1>Detalle de Venta</h1>
+  <nav><a class="button back" th:href="@{/ventas}">Volver</a></nav>
+  <div>
+    <p><strong>ID Venta:</strong> <span th:text="${venta.id}">1</span></p>
+    <p><strong>Cliente:</strong> <span th:text="${venta.idCliente}">1</span></p>
+    <p><strong>Fecha:</strong> <span th:text="${venta.fecha}">fecha</span></p>
+    <p><strong>Estado:</strong> <span th:text="${venta.estado}">PAGADA</span></p>
+    <p><strong>Total:</strong> <span th:text="${venta.total}">0</span></p>
+  </div>
+  <table>
+    <thead><tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+    <tbody>
+      <tr th:each="d : ${detalles}">
+        <td th:text="${d.idProducto}">1</td>
+        <td th:text="${d.precioUnitario}">0</td>
+        <td th:text="${d.cantidad}">0</td>
+        <td th:text="${d.subtotal}">0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
