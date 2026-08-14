@@ -1,16 +1,12 @@
 package ar.org.centro8.java.curso.proyecto_final_poo.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import ar.org.centro8.java.curso.proyecto_final_poo.model.entity.DetalleVenta;
 
-import java.util.List;
-
 @Repository
-public interface  DetalleVentaRepository extends JpaRepository<DetalleVenta, Long>{
+public interface  DetalleVentaRepository extends JpaRepository<DetalleVenta, Integer>{
 
     
 

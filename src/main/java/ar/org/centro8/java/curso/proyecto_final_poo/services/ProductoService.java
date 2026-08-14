@@ -21,7 +21,7 @@ public class ProductoService {
         return repo.findAll();
     }
 
-    public Optional <Producto> buscar(Long id) {
+    public Optional <Producto> buscar(int id) {
         return repo.findById(id);
     }
 
@@ -33,7 +33,7 @@ public class ProductoService {
         return repo.save(p);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         repo.deleteById(id);
     }
 }

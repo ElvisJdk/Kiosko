@@ -1,16 +1,12 @@
 package ar.org.centro8.java.curso.proyecto_final_poo.model.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import ar.org.centro8.java.curso.proyecto_final_poo.model.entity.Producto;
 
 @Repository
-public interface ProductoRepository extends JpaRepository<Producto,Long>{
+public interface ProductoRepository extends JpaRepository<Producto,Integer>{
 
     
 

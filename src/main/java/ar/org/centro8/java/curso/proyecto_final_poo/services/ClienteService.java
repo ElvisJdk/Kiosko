@@ -20,7 +20,7 @@ public class ClienteService {
         return repo.findAll();
     }
 
-    public Optional <Cliente> buscar(Long id) {
+    public Optional <Cliente> buscar(int id) {
         return repo.findById(id);
     }
 
@@ -33,7 +33,7 @@ public class ClienteService {
        return repo.save(c);
     }
 
-    public void eliminar(Long id) {
+    public void eliminar(int id) {
         repo.deleteById(id);
     }
 }

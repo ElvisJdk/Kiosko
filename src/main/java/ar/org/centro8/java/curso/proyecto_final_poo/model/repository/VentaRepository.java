@@ -1,20 +1,12 @@
 package ar.org.centro8.java.curso.proyecto_final_poo.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import ar.org.centro8.java.curso.proyecto_final_poo.model.entity.Venta;
-import ar.org.centro8.java.curso.proyecto_final_poo.model.enums.EstadoVenta;
-import lombok.val;
-
-import java.time.LocalDateTime;
-import java.sql.Timestamp;
-import java.util.List;
 
 @Repository
-public interface VentaRepository extends JpaRepository<VentaRepository, Long>{
+public interface VentaRepository extends JpaRepository<Venta, Integer>{
 
     
 

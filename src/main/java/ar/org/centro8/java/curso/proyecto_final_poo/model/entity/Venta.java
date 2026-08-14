@@ -3,17 +3,34 @@ package ar.org.centro8.java.curso.proyecto_final_poo.model.entity;
 import java.time.LocalDateTime;
 
 import ar.org.centro8.java.curso.proyecto_final_poo.model.enums.EstadoVenta;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data 
-@NoArgsConstructor 
-@AllArgsConstructor
+
+@Data
+@Entity
+@Table (name = "ventas")
 public class Venta {
-    private Integer id;
-    private Integer idCliente;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer id_venta;
+    @ManyToMany
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente cliente;
+    @Column(nullable = false)
     private LocalDateTime fecha;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
     private EstadoVenta estado;
+    @Column(nullable = false)
     private Double total;
 }
