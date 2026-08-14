@@ -4,12 +4,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import ar.org.centro8.java.curso.proyecto_final_poo.model.entity.DetalleVenta;
+import java.util.List;
 
 @Repository
 public interface  DetalleVentaRepository extends JpaRepository<DetalleVenta, Integer>{
 
-    
 
+    List<DetalleVenta> findByVentaIdVenta(Integer idVenta);
+    
+    void deleteByVentaIdVenta(Integer idVenta);
+}
     
 
 
@@ -65,4 +69,4 @@ public interface  DetalleVentaRepository extends JpaRepository<DetalleVenta, Int
         jdbc.update("DELETE FROM detalle_ventas WHERE id_venta=?", idVenta);
     }
         */
-}
+

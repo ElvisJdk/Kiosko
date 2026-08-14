@@ -81,8 +81,12 @@ public class VentaService {
             double subtotal = precioUnitario * cantidad;
             total += subtotal;
 
-            DetalleVenta detalle = new DetalleVenta(idVenta,idProducto,);
-
+            DetalleVenta detalle = new DetalleVenta();
+            detalle.setVenta(venta);
+            detalle.setProducto(producto);
+            detalle.setCantidad(cantidad);
+            detalle.setPrecioUnitario(precioUnitario);
+            detalle.setSubtotal(subtotal);
             detalleRepo.save(detalle);
 
             producto.setStock(producto.getStock() - cantidad);
@@ -98,12 +102,17 @@ public class VentaService {
         return idVenta;
     }
 
-    public List<DetalleVenta> detalles(int idVenta) {
-        return detalleRepo.findByVenta(idVenta);
-    }
+    public List<DetalleVenta> detalles(Integer idVenta) {
+    return detalleRepo.findByVentaIdVenta(idVenta);
+}
 
-    public void eliminar(int idVenta) {
-        detalleRepo.deleteByVenta(idVenta);
-        ventaRepo.delete(idVenta);
+    public void eliminar(Integer  idVenta) {
+
+        if(!ventaRepo.existsById(idVenta)){
+            throw new RuntimeException("no existe la venta con id: + idVenta");
+        }
+
+        detalleRepo.deleteByVentaIdVenta(idVenta);
+        ventaRepo.deleteById(idVenta);
     }
 }
