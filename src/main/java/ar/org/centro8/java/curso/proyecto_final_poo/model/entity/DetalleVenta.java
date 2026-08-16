@@ -20,17 +20,22 @@ import lombok.NoArgsConstructor;
 public class DetalleVenta {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY )
-    private Integer idVenta;
+    private Integer idDelalle;
+
     @ManyToOne
     @JoinColumn(name = "id_producto",nullable = false)
     private Producto producto;
+
     @ManyToOne
     @JoinColumn(name = "id_venta", nullable = false)
     private Venta venta;
+
     @Column(nullable = false)
     private Double precioUnitario;
+
     @Column(nullable = false)
     private Integer cantidad;
+    
     @Column(nullable = false)
     private Double subtotal;
 }

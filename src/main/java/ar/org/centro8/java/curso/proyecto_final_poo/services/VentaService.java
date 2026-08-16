@@ -3,7 +3,6 @@ package ar.org.centro8.java.curso.proyecto_final_poo.services;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,9 +36,12 @@ public class VentaService {
         return ventaRepo.findAll();
     }
 
-    public Optional<Venta> buscar(int id) {
-        return ventaRepo.findById(id);
-    }
+    public Venta buscar(int id) {
+    return ventaRepo.findById(id)
+            .orElseThrow(() -> new RuntimeException(
+                    "No existe la venta con ID: " + id
+            ));
+}
 
     @Transactional
     public int crearVenta(int idCliente, List<Map<String, Integer>> items) {
@@ -56,7 +58,7 @@ public class VentaService {
         venta.setTotal(0.0);
 
         venta = ventaRepo.save(venta);
-        int idVenta = venta.getId_venta();
+        int idVenta = venta.getIdVenta();
 
         double total = 0.0;
 

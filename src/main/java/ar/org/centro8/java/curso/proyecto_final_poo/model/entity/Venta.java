@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -22,15 +22,21 @@ import lombok.Data;
 public class Venta {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id_venta;
-    @ManyToMany
+    @Column(name = "id_venta")
+    private Integer idVenta;
+    
+    @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
+
     private Cliente cliente;
     @Column(nullable = false)
+
     private LocalDateTime fecha;
     @Enumerated(EnumType.STRING)
+    
     @Column(nullable = false, length = 20)
     private EstadoVenta estado;
+    
     @Column(nullable = false)
     private Double total;
 }
